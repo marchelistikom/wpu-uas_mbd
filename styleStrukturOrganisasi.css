@@ -1,0 +1,259 @@
+/* styleStrukturOrganisasi.css */
+
+/* Styling untuk Bagian Struktur Organisasi umum */
+/* Ini bisa juga dipakai di tni-structure-section dari style.css utama,
+    tapi jika diletakkan di sini, pastikan file ini diload setelah style.css
+    agar aturan ini yang berlaku. */
+.tni-structure-section {
+    margin-bottom: 40px; /* Jarak antar setiap bagian struktur */
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #fcfcfc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.tni-structure-section h2 {
+    color: #CD0000; /* Warna merah untuk judul bagian */
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: left; /* Biarkan judul bagian rata kiri */
+}
+
+/* --- Styling untuk Struktur Organisasi dengan Garis Turunan dan Foto --- */
+
+.org-chart-container {
+    overflow-x: auto; /* Untuk scroll horizontal jika terlalu lebar */
+    padding-bottom: 20px; /* Beri ruang di bawah jika ada scroll */
+}
+
+.org-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Pusatkan seluruh bagan secara horizontal */
+    padding: 20px;
+    position: relative;
+    min-width: 1200px; /* Tingkatkan min-width agar lebih banyak ruang untuk node di bawah */
+    /* Sesuaikan nilai ini jika konten Anda terasa terlalu lebar atau sempit.
+       Ini penting agar node terbawah (KSAD, KSAL, KSAU, KSALU, KSAC) memiliki cukup ruang. */
+}
+
+.org-node {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px; /* Perbesar radius agar lebih bulat */
+    padding: 15px 25px; /* Perbesar padding di dalam kotak */
+    margin: 20px 0; /* Jarak vertikal antar node lebih besar */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Perbesar shadow agar lebih menonjol */
+    position: relative;
+    z-index: 2; /* Agar di atas garis */
+    min-width: 220px; /* Perbesar lebar minimum setiap kotak */
+    max-width: 280px; /* Perbesar batas lebar maksimum setiap kotak */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Pusatkan konten di dalam node */
+    box-sizing: border-box; /* Pastikan padding dan border termasuk dalam width/height */
+}
+
+.org-node img {
+    width: 100px; /* Perbesar ukuran foto */
+    height: 100px; /* Perbesar ukuran foto */
+    border-radius: 50%; /* Membuat foto jadi bulat */
+    object-fit: cover; /* Pastikan gambar mengisi area tanpa terdistorsi */
+    margin-bottom: 12px; /* Jarak antara foto dan nama lebih besar */
+    border: 3px solid #CD0000; /* Perbesar border merah di sekitar foto */
+}
+
+.org-node .name {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.25em; /* Perbesar ukuran font nama */
+    margin-bottom: 5px; /* Jarak antara nama dan jabatan lebih besar */
+}
+
+.org-node .position {
+    font-size: 1em; /* Perbesar ukuran font jabatan */
+    color: #666;
+    line-height: 1.3; /* Kerapatan baris */
+}
+
+/* Container untuk grup anak-anak (children) */
+.children {
+    display: flex;
+    justify-content: center; /* Pusatkan anak-anak secara horizontal */
+    width: 100%;
+    position: relative;
+    padding-top: 50px; /* Ruang lebih besar untuk garis vertikal dari parent */
+}
+
+/* Garis vertikal dari parent ke children container */
+.children::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%; /* Garis vertikal dari parent */
+    width: 3px; /* Perbesar ketebalan garis */
+    height: 50px; /* Tinggi garis dari parent ke tengah horizontal children */
+    background-color: #CD0000;
+    transform: translateX(-50%);
+}
+
+/* Garis horizontal di atas children */
+.children::after {
+    content: '';
+    position: absolute;
+    top: 50px; /* Sejajar dengan akhir garis vertikal dari parent */
+    left: 0;
+    right: 0;
+    height: 3px; /* Perbesar ketebalan garis */
+    background-color: #CD0000;
+}
+
+/* Gaya khusus untuk anak-anak yang hanya satu */
+.children:only-child::after {
+    display: none; /* Sembunyikan garis horizontal jika hanya ada satu anak */
+}
+
+.children .org-node {
+    margin: 0 20px; /* Jarak horizontal antar siblings lebih besar */
+    flex-shrink: 0; /* Jangan menyusutkan node */
+    position: relative;
+    top: 50px; /* Pindahkan node ke bawah agar ada ruang untuk garis horizontal */
+}
+
+/* Garis vertikal dari horizontal line ke setiap child node */
+.children .org-node::before {
+    content: '';
+    position: absolute;
+    top: -50px; /* Naik ke atas untuk menyambung ke garis horizontal */
+    left: 50%;
+    width: 3px; /* Perbesar ketebalan garis */
+    height: 50px; /* Garis vertikal dari horizontal ke node */
+    background-color: #CD0000;
+    transform: translateX(-50%);
+    z-index: 1; /* Di bawah node */
+}
+
+/* Untuk sub-level children (misal KSAD, KSAL, KSAU, KSALU, KSAC di bawah Panglima TNI) */
+/* Karena ada banyak node di level ini, pastikan mereka tertata dengan baik */
+.children.sub-level {
+    padding-top: 50px; /* Sesuaikan padding agar konsisten */
+    flex-wrap: wrap; /* Izinkan node untuk membungkus ke baris baru jika tidak muat */
+    justify-content: center; /* Tetap pusatkan */
+    gap: 40px 25px; /* Perbesar jarak antar kolom dan baris jika wrap */
+}
+
+.children.sub-level .org-node {
+    margin: 0; /* Reset margin horizontal agar 'gap' yang bekerja */
+}
+
+
+.children.sub-level::before {
+    height: 50px; /* Sesuaikan tinggi garis */
+}
+
+.children.sub-level::after {
+    top: 50px; /* Sesuaikan posisi garis */
+}
+
+
+/* Responsive design untuk layar kecil */
+@media screen and (max-width: 768px) {
+    .org-chart {
+        align-items: flex-start; /* Biarkan elemen berbaris ke kiri */
+        padding: 10px;
+        min-width: unset; /* Hapus min-width agar responsif */
+    }
+
+    .org-node {
+        margin: 15px auto; /* Pusatkan node di tengah baris mereka sendiri, margin lebih besar */
+        width: 95%; /* Ambil sebagian besar lebar */
+        max-width: 350px; /* Batasi lebar agar tidak terlalu besar */
+        padding: 12px 18px; /* Sesuaikan padding */
+    }
+
+    .org-node img {
+        width: 80px; /* Sesuaikan ukuran foto di mobile */
+        height: 80px; /* Sesuaikan ukuran foto di mobile */
+        margin-bottom: 10px; /* Sesuaikan margin */
+    }
+
+    .org-node .name {
+        font-size: 1.1em; /* Sesuaikan ukuran font nama di mobile */
+    }
+
+    .org-node .position {
+        font-size: 0.9em; /* Sesuaikan ukuran font jabatan di mobile */
+    }
+
+
+    .children {
+        flex-direction: column; /* Ubah children menjadi kolom */
+        align-items: flex-start; /* Ratakan ke kiri */
+        padding-top: 20px; /* Ruang lebih besar di mobile */
+        width: 100%;
+    }
+
+    /* Garis vertikal dari parent ke children container di mobile */
+    .children::before {
+        left: 35px; /* Pindahkan garis vertikal ke kiri */
+        transform: translateX(0);
+        height: 20px; /* Sesuaikan tinggi garis vertikal */
+        width: 3px; /* Sesuaikan ketebalan garis */
+    }
+
+    .children::after {
+        display: none; /* Sembunyikan garis horizontal di mobile */
+    }
+
+    /* Node anak di mobile, dengan indentasi dan garis L-shape */
+    .children .org-node {
+        margin: 15px 0 15px 70px; /* Margin kiri untuk indentasi dan ruang garis lebih besar */
+        width: calc(100% - 85px); /* Kurangi lebar karena margin kiri dan padding */
+        top: 0; /* Reset top positioning */
+    }
+
+    .children .org-node::before {
+        left: -35px; /* Posisikan garis vertikal di kiri node */
+        height: 100%; /* Garis vertikal dari atas ke bawah node */
+        top: 0;
+        border-right: 3px solid #CD0000; /* Buat seperti L-shape */
+        border-top: 3px solid #CD0000;
+        width: 35px; /* Lebar garis horizontal L-shape */
+        background-color: transparent;
+        transform: translateX(0);
+        border-radius: 0;
+    }
+    
+    /* Tambahan untuk garis dari node ke anak di mobile, khusus top-level */
+    .org-node.top-level + .children::before {
+        left: 50%; /* Tetap di tengah untuk level tertinggi */
+        transform: translateX(-50%);
+        height: 40px; /* Perbesar tinggi */
+        width: 3px; /* Sesuaikan ketebalan */
+    }
+    .org-node.top-level + .children::after {
+        display: block; /* Tampilkan lagi garis horizontal jika dibutuhkan untuk level tertinggi */
+        top: 40px; /* Sesuaikan posisi */
+        height: 3px; /* Sesuaikan ketebalan */
+    }
+
+    /* Sesuaikan padding main-content di mobile */
+    .main-content {
+        padding: 15px;
+    }
+
+    /* Penyesuaian khusus untuk sub-level di mobile agar tidak terlalu jauh */
+    .children.sub-level {
+        gap: 20px; /* Kurangi gap di mobile */
+    }
+
+    .children.sub-level .org-node {
+        margin: 15px 0 15px 70px; /* Pertahankan indentasi */
+        width: calc(100% - 85px); /* Pertahankan lebar */
+    }
+}

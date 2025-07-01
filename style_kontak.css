@@ -1,0 +1,227 @@
+/* style_kontak.css */
+
+/* ------------------- */
+/* GLOBAL RESET + BODY */
+/* ------------------- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* ------------------- */
+/* NAVBAR STYLING */
+/* ------------------- */
+.navbar {
+    background-color: #CD0000;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo-tni {
+    height: 45px;
+    width: auto;
+    margin-right: 15px;
+}
+
+.navbar-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-nav li {
+    position: relative;
+    margin-left: 30px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px 0;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #e0e0e0;
+}
+
+/* Dropdown Styling */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #CD0000;
+    min-width: 250px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-top: 2px solid white;
+    left: 0;
+    top: 100%;
+}
+
+.dropdown-menu a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu a:hover {
+    background-color: #A00000;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Triangle Icon */
+.dropdown-toggle::after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 8px;
+    vertical-align: middle;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid white;
+    transition: transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-toggle::after {
+    transform: rotate(180deg);
+}
+
+/* ------------------- */
+/* KONTAK PAGE STYLING */
+/* ------------------- */
+.kontak-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.kontak-info h1,
+.form-section h2 {
+    color: #a80000;
+    margin-bottom: 10px;
+}
+
+.kontak-info p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.info-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.info-list li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #444;
+}
+
+.form-section {
+    margin-top: 30px;
+}
+
+.form-kontak {
+    margin-top: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn-kirim {
+    background-color: #a80000;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-kirim:hover {
+    background-color: #870000;
+}
+
+/* ---------------------------- */
+/* NOTIFIKASI SUKSES / GAGAL   */
+/* ---------------------------- */
+.notif {
+    position: fixed;
+    top: 80px;
+    right: 30px;
+    padding: 15px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    z-index: 9999;
+    animation: fadeIn 0.5s ease-out;
+    transition: all 0.5s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+}
+
+.notif-sukses {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.notif-gagal {
+    background-color: #f44336;
+    color: white;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+

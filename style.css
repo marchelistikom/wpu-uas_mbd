@@ -1,0 +1,201 @@
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #CD0000; /* Warna merah */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    padding-left: 20px; /* Jarak dari kiri agar tidak terlalu mepet */
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo-tni {
+    height: 45px; /* Tinggi logo */
+    width: auto;
+    margin-right: 15px; /* Jarak antara logo dan teks */
+}
+
+.navbar-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-nav li {
+    position: relative;
+    margin-left: 30px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px 0;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #e0e0e0;
+}
+
+/* Dropdown Styling */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #CD0000;
+    min-width: 250px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-top: 2px solid white;
+    left: 0; 
+    top: 100%; 
+}
+
+.dropdown-menu a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu a:hover {
+    background-color: #A00000;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Styling untuk simbol segitiga ke bawah */
+.dropdown-toggle::after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 8px;
+    vertical-align: middle;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid white;
+    transition: transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-toggle::after {
+    transform: rotate(180deg);
+}
+
+/* --- Styling untuk Konten Utama --- */
+
+.main-content {
+    padding: 20px 50px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+.main-content h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Styling untuk Galeri Foto */
+.image-gallery h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.gallery-container {
+    display: flex; /* Menggunakan Flexbox untuk menata item galeri */
+    flex-wrap: wrap; /* Izinkan item untuk wrapping ke baris baru jika tidak cukup ruang */
+    justify-content: center; /* Pusatkan item jika ada ruang kosong */
+    gap: 25px; /* Jarak antar item galeri */
+    margin-bottom: 40px; /* Jarak antara galeri dan paragraf di bawahnya */
+}
+
+.gallery-item {
+    flex: 1 1 300px; /* Flex-grow, flex-shrink, flex-basis. Akan mengambil setidaknya 300px lebar */
+    max-width: 350px; /* Batasi lebar maksimum per item */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden; /* Pastikan gambar tidak keluar dari batas */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px); /* Efek sedikit naik saat di-hover */
+}
+
+.gallery-item img {
+    width: 100%; /* Gambar akan memenuhi lebar itemnya */
+    height: 200px; /* Tinggi tetap untuk konsistensi */
+    object-fit: cover; /* Memastikan gambar mengisi area tanpa terdistorsi */
+    display: block; /* Menghilangkan spasi ekstra di bawah gambar */
+    border-bottom: 1px solid #eee;
+}
+
+.gallery-item p {
+    padding: 15px;
+    font-size: 0.9em;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Styling untuk Bagian Informasi TNI */
+.tni-info {
+    padding-top: 30px;
+    border-top: 2px solid #eee; /* Garis pemisah dari bagian galeri */
+}
+
+.tni-info h2, .tni-info h3 {
+    color: #333;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.tni-info p {
+    line-height: 1.8;
+    margin-bottom: 15px;
+    color: #444;
+    text-align: justify;
+}
+
+.tni-info ol {
+    margin-left: 25px;
+    margin-bottom: 15px;
+    color: #444;
+}
+
+.tni-info ol li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+

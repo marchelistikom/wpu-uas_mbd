@@ -1,0 +1,414 @@
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #CD0000; /* Warna merah */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    padding-left: 20px; /* Jarak dari kiri agar tidak terlalu mepet */
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo-tni {
+    height: 45px; /* Tinggi logo */
+    width: auto;
+    margin-right: 15px; /* Jarak antara logo dan teks */
+}
+
+.navbar-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-nav li {
+    position: relative;
+    margin-left: 30px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px 0;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #e0e0e0;
+}
+
+/* Dropdown Styling */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #CD0000;
+    min-width: 250px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-top: 2px solid white;
+    left: 0; 
+    top: 100%; 
+}
+
+.dropdown-menu a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu a:hover {
+    background-color: #A00000;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Styling untuk simbol segitiga ke bawah */
+.dropdown-toggle::after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 8px;
+    vertical-align: middle;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid white;
+    transition: transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-toggle::after {
+    transform: rotate(180deg);
+}
+
+/* Responsif untuk mobile - menggunakan media queries */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar-nav {
+        width: 100%;
+        margin-top: 1rem; /* Jarak dari brand di mobile */
+    }
+    .navbar-nav ul {
+        flex-direction: column; /* Menu vertikal di mobile */
+        width: 100%;
+    }
+    .navbar-nav li {
+        margin-left: 0;
+        width: 100%;
+        text-align: left;
+    }
+    .navbar-nav .nav-link {
+        padding: 0.75rem 1rem;
+    }
+    .dropdown-menu {
+        position: static; /* Dropdown di bawah tombolnya di mobile, tidak absolute */
+        width: 100%;
+        box-shadow: none;
+        border-top: 1px solid #eee;
+        border-radius: 0;
+        transform: none;
+    }
+    .dropdown-menu.show { /* Pastikan tetap tampil saat show di mobile */
+        display: block;
+    }
+}
+
+/* Main Content (Canvas Hijau) untuk formulir edit */
+.main-content {
+    max-width: 900px; /* Lebar maksimum form, disesuaikan agar tidak terlalu lebar */
+    margin: 3rem auto; /* Atur margin atas, pusatkan horizontal */
+    padding: 2.5rem; /* Padding internal */
+    background-color: #006400; /* Warna hijau TNI AD (DarkGreen) */
+    border-radius: 12px; /* Sudut membulat */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2); /* Shadow lebih menonjol */
+    color: #FFFFFF; /* Warna teks default di main-content menjadi putih */
+}
+
+/* Header di dalam main-content (Logo dan Judul Form) */
+.header-content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap; /* Agar responsif */
+    text-align: center;
+}
+
+.logo-form {
+    width: 100px; /* Ukuran logo */
+    height: 100px;
+    object-fit: contain;
+    margin-right: 1.5rem;
+    flex-shrink: 0;
+}
+
+.section-title-form {
+    font-size: 2.2rem; /* Ukuran judul form */
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Container untuk Form itu sendiri */
+.form-container {
+    background-color: #fff; /* Latar belakang form putih */
+    padding: 2.5rem; /* Padding lebih besar */
+    border-radius: 10px; /* Sudut membulat */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Shadow untuk form */
+    color: #333; /* Warna teks di dalam form menjadi gelap */
+}
+
+/* Styling untuk setiap group input (label + input) */
+.form-group {
+    margin-bottom: 1.5rem; /* Jarak antar group form */
+}
+
+.form-group label {
+    display: block; /* Label di atas input */
+    margin-bottom: 0.6rem; /* Jarak antara label dan input */
+    font-weight: 600; /* Tebal */
+    color: #444; /* Warna teks label */
+    font-size: 0.95rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="date"],
+.form-group input[type="file"],
+.form-group select {
+    width: 100%; /* Lebar penuh */
+    padding: 0.8rem 1rem; /* Padding input */
+    border: 1px solid #ddd; /* Border halus */
+    border-radius: 8px; /* Sudut membulat */
+    font-size: 1rem; /* Ukuran font input */
+    box-sizing: border-box; /* Pastikan padding dan border tidak menambah lebar */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="date"]:focus,
+.form-group select:focus {
+    border-color: #007bff; /* Border biru saat fokus */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Shadow halus saat fokus */
+    outline: none; /* Hapus outline default browser */
+}
+
+.form-group input[type="file"] {
+    padding: 0.5rem 1rem; /* Padding khusus untuk input file */
+    background-color: #f8f8f8;
+    cursor: pointer;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Styling untuk thumbnail foto saat ini */
+.current-pas-foto-thumbnail {
+    max-width: 80px; /* Ukuran thumbnail */
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem; /* Jarak dengan input file */
+    display: block;
+}
+
+/* Styling untuk tombol submit */
+.submit-button {
+    background-color: #007bff; /* Warna biru */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.9rem 1.8rem; /* Padding tombol */
+    font-size: 1.05rem; /* Ukuran font tombol */
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    width: auto; /* Lebar otomatis */
+    display: inline-block; /* Agar bisa margin dan tidak memenuhi baris */
+    margin-right: 1rem; /* Jarak dengan tombol kembali */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Styling untuk tombol kembali */
+.back-button {
+    background-color: #6c757d; /* Warna abu-abu */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.9rem 1.8rem;
+    font-size: 1.05rem;
+    text-decoration: none; /* Hapus underline */
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    width: auto;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.back-button:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* Pesan "Data tidak ditemukan" */
+.not-found-message {
+    text-align: center;
+    color: #dc3545; /* Warna merah untuk pesan error */
+    font-size: 1.1rem;
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #ffebe6;
+    border: 1px solid #dc3545;
+    border-radius: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 1.5rem;
+        margin: 1.5rem auto;
+    }
+
+    .header-content-wrapper {
+        flex-direction: column;
+        margin-bottom: 1.5rem;
+    }
+
+    .logo-form {
+        margin-right: 0;
+        margin-bottom: 1rem;
+        width: 80px;
+        height: 80px;
+    }
+
+    .section-title-form {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    .form-container {
+        padding: 1.5rem;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 0.7rem 0.9rem;
+        font-size: 0.9rem;
+    }
+
+    .submit-button, .back-button {
+        display: block; /* Tombol jadi block di mobile */
+        width: 100%; /* Memenuhi lebar */
+        margin-right: 0;
+        margin-bottom: 1rem; /* Jarak antar tombol */
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* ----------- Gaya untuk Notifikasi/Animasi Sukses/Error ----------- */
+.notification-container {
+    position: fixed; /* Posisi tetap di viewport */
+    top: 20px; /* Dari atas */
+    right: 20px; /* Dari kanan */
+    z-index: 1000; /* Pastikan di atas elemen lain */
+    display: flex; /* Untuk menata multiple notifications */
+    flex-direction: column; /* Tumpuk notifikasi secara vertikal */
+    gap: 10px; /* Jarak antar notifikasi */
+}
+
+.notification {
+    background-color: #4CAF50; /* Hijau untuk sukses */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0; /* Mulai dengan transparan */
+    transform: translateY(-20px); /* Mulai dari atas sedikit */
+    animation: fadeInSlideDown 0.5s ease-out forwards, fadeOut 0.5s ease-out 3s forwards; /* Animasi masuk dan keluar */
+    min-width: 250px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.notification.error {
+    background-color: #f44336; /* Merah untuk error */
+}
+
+@keyframes fadeInSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+/* Responsive untuk notifikasi di mobile */
+@media (max-width: 600px) {
+    .notification-container {
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        width: auto; /* Lebar otomatis */
+    }
+    .notification {
+        min-width: unset; /* Hilangkan min-width */
+        font-size: 0.9rem;
+        padding: 12px 18px;
+    }
+}

@@ -1,0 +1,244 @@
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #CD0000; /* Warna merah */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    padding-left: 20px; /* Jarak dari kiri agar tidak terlalu mepet */
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo-tni {
+    height: 45px; /* Tinggi logo */
+    width: auto;
+    margin-right: 15px; /* Jarak antara logo dan teks */
+}
+
+.navbar-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-nav li {
+    position: relative;
+    margin-left: 30px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px 0;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #e0e0e0;
+}
+
+/* Dropdown Styling */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #CD0000;
+    min-width: 250px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-top: 2px solid white;
+    left: 0; 
+    top: 100%; 
+}
+
+.dropdown-menu a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu a:hover {
+    background-color: #A00000;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Styling untuk simbol segitiga ke bawah */
+.dropdown-toggle::after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 8px;
+    vertical-align: middle;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid white;
+    transition: transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-toggle::after {
+    transform: rotate(180deg);
+}
+
+/* --- Styling untuk Timeline (khusus sejarah_tni.php) --- */
+.timeline {
+    position: relative;
+    max-width: 1000px; /* Lebar maksimal timeline */
+    margin: 50px auto; /* Tengahkan timeline */
+    padding: 20px 0;
+}
+
+/* Garis vertikal timeline */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: #CD0000; /* Warna garis merah */
+    top: 0;
+    bottom: 0;
+    left: 50%; /* Posisikan di tengah */
+    margin-left: -2px; /* Setengah lebar garis untuk centering */
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%; /* Setiap item mengambil setengah lebar timeline */
+    box-sizing: border-box; /* Hitung padding dan border dalam lebar */
+}
+
+/* Titik pada garis timeline */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: white; /* Warna titik */
+    border: 4px solid #CD0000; /* Border titik merah */
+    top: 15px;
+    border-radius: 50%; /* Membuat titik menjadi lingkaran */
+    z-index: 1; /* Pastikan titik di atas garis */
+}
+
+/* Konten item timeline */
+.timeline-content {
+    padding: 20px 30px;
+    background-color: #f8f8f8; /* Background kotak konten */
+    position: relative;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.timeline-content h2 {
+    color: #CD0000; /* Warna judul event */
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.timeline-content p {
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Posisi item kiri */
+.left {
+    left: 0;
+    padding-right: 60px; /* Ruang untuk titik dan garis */
+}
+
+.left::after {
+    left: 100%; /* Posisikan titik di ujung kanan item kiri */
+    margin-left: -12.5px; /* Sesuaikan untuk centering titik */
+}
+
+/* Panah yang menunjuk ke garis tengah dari item kiri */
+.left .timeline-content::after {
+    content: " ";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 22px;
+    right: -15px; /* Posisikan di kanan kotak konten */
+    border: medium solid #f8f8f8; /* Sesuaikan dengan background konten */
+    border-width: 10px 0 10px 10px; /* Bentuk segitiga menunjuk ke kanan */
+    border-color: transparent transparent transparent #f8f8f8;
+}
+
+/* Posisi item kanan */
+.right {
+    left: 50%; /* Mulai dari tengah */
+    padding-left: 60px; /* Ruang untuk titik dan garis */
+}
+
+.right::after {
+    left: -12.5px; /* Posisikan titik di ujung kiri item kanan */
+}
+
+/* Panah yang menunjuk ke garis tengah dari item kanan */
+.right .timeline-content::after {
+    content: " ";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 22px;
+    left: -15px; /* Posisikan di kiri kotak konten */
+    border: medium solid #f8f8f8; /* Sesuaikan dengan background konten */
+    border-width: 10px 10px 10px 0; /* Bentuk segitiga menunjuk ke kiri */
+    border-color: transparent #f8f8f8 transparent transparent;
+}
+
+/* Responsive design untuk layar kecil */
+@media screen and (max-width: 768px) {
+    .timeline::after {
+        left: 20px; /* Pindahkan garis ke kiri */
+        margin-left: 0;
+    }
+
+    .timeline-item {
+        width: 100%; /* Semua item ambil 100% lebar */
+        padding-left: 60px; /* Sesuaikan padding untuk semua item */
+        padding-right: 15px;
+    }
+
+    .timeline-item.left,
+    .timeline-item.right {
+        left: 0; /* Semua item mulai dari kiri */
+    }
+
+    .timeline-item::after {
+        left: 15px; /* Posisikan titik di dekat garis */
+    }
+
+    .left .timeline-content::after,
+    .right .timeline-content::after {
+        border-color: transparent transparent transparent #f8f8f8; /* Semua panah menunjuk ke kanan */
+        left: -15px;
+        right: auto;
+    }
+}
